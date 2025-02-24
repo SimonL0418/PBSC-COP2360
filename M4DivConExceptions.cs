@@ -1,4 +1,3 @@
-
 using System;
 
 class Program
@@ -24,16 +23,17 @@ class Program
         }
         catch (FormatException)
         {
-            Console.WriteLine("Error: Invalid input. You did not enter numeric values, specifically represented by Arabic numerals in a base 10 system.");
+            Console.WriteLine("Error: Invalid input. Please enter valid integers.");
+            Console.WriteLine($"Please enter Arabic numerals in the base 10 system.");
         }
         catch (DivideByZeroException)
         {
-            Console.WriteLine("Error: Division by zero is not allowed. Current mathematics does not have a solution for such a calculation");
+            Console.WriteLine("Error: Division by zero is not allowed. The second number cannot be zero.");
         }
         catch (OverflowException)
         {
             Console.WriteLine("Error: The number is too large or too small for an integer.");
-            Console.Writeline($"The values must fall between the values -2147483648 and 2147483647.")
+            Console.WriteLine($"Keep integers between the values -2147483648 and 2147483647.");
         }
         catch (Exception ex)
         {
