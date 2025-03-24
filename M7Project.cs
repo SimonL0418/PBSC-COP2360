@@ -6,11 +6,13 @@ class Program
 {
     static void Main()
     {
+        //dictionary creation
         Dictionary<string, List<string>> myDict = new Dictionary<string, List<string>>();
-        bool running = true;
+        bool running = true; //something about keeping a loop
 
         while (running)
         {
+            //options
             Console.WriteLine("\nOptions:");
             Console.WriteLine("1. Populate dictionary");
             Console.WriteLine("2. Display contents");
@@ -22,7 +24,7 @@ class Program
             Console.Write("Enter choice: ");
 
             string choice = Console.ReadLine();
-
+//big switch statements
             switch (choice)
             {
                 case "1":
@@ -44,41 +46,42 @@ class Program
                     SortKeys(myDict);
                     break;
                 case "7":
-                    running = false;
+                    running = false; //probably closes it
                     Console.WriteLine("quit program");
                     break;
                 default:
-                    Console.WriteLine("Invlalid choice. choose again");
+                    Console.WriteLine("Invalid choice. choose again");
                     break;
             }
         }
     }
-
+//does the pair
     static void PopulateDictionary(Dictionary<string, List<string>> dict)
     {
         Console.Write("Key: ");
         string key = Console.ReadLine();
         Console.Write("Value: ");
         string value = Console.ReadLine();
-
+//new list
         if (!dict.ContainsKey(key))
         {
             dict[key] = new List<string>();
         }
-
+//adding stuff to list
         dict[key].Add(value);
         Console.WriteLine($"{value} added to key '{key}'.");
     }
-
+//shows stuff
     static void DisplayDictionary(Dictionary<string, List<string>> dict)
     {
         Console.WriteLine("\nDictionary Contents:");
         foreach (var pair in dict)
         {
+            //shows specific stuff
             Console.WriteLine($"{pair.Key}: {string.Join(", ", pair.Value)}");
         }
     }
-
+//delete stuff
     static void RemoveKey(Dictionary<string, List<string>> dict)
     {
         Console.Write("Remove key: ");
@@ -93,7 +96,7 @@ class Program
             Console.WriteLine($"Key '{key}' not found.");
         }
     }
-
+//add new pair stuff
     static void AddNewKeyValue(Dictionary<string, List<string>> dict)
     {
         Console.Write("New key: ");
@@ -101,15 +104,16 @@ class Program
         Console.Write("Value: ");
         string value = Console.ReadLine();
 
+        //new list if no list
         if (!dict.ContainsKey(key))
         {
             dict[key] = new List<string>();
         }
-
+//add num to list
         dict[key].Add(value);
         Console.WriteLine($"'{key}' added with value '{value}'.");
     }
-
+//add stuff to existing keys
     static void AddValueToExistingKey(Dictionary<string, List<string>> dict)
     {
         Console.Write("Key: ");
@@ -127,9 +131,10 @@ class Program
             Console.WriteLine("Key not found.");
         }
     }
-
+//sort stuff
     static void SortKeys(Dictionary<string, List<string>> dict)
     {
+        //in ascending
         var sortedKeys = dict.Keys.OrderBy(k => k).ToList();
         Console.WriteLine("\nSorted Keys:");
         foreach (var key in sortedKeys)
